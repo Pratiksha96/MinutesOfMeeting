@@ -5,7 +5,7 @@ import pyaudio
 import wave
 
 class Recorder(object):
-    '''A recorder class for recording audio to a WAV file.
+    '''A recorder class for recording audio to a MP3 file.
     Records in mono by default.
     '''
     def __init__(self, channels=1, rate=44100, frames_per_buffer=1024):
@@ -87,8 +87,11 @@ class Recording(threading.Thread):
         self.shutdownFlag = threading.Event()
         self.rec = Recorder(channels=2)
 
+    def generateFileName(self):
+        return 'recordMe' + time.asctime(time.localtime(time.time())) + '.mp3'
+
     def run(self):
-        with self.rec.open('recordMe'+time.asctime(time.localtime(time.time()))+'.mp3', 'wb') as self.recfile2:
+        with self.rec.open(self.generateFileName(), 'wb') as self.recfile2:
             self.recfile2.start_recording()
             while not self.stopped():
                 pass
