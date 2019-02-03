@@ -1,2 +1,5 @@
 .ipynb_checkpoints
 *.mp3
+.idea
+*.xml
+*.iml
