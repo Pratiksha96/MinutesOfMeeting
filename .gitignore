@@ -1,5 +1,6 @@
 .ipynb_checkpoints
 *.mp3
-.idea
+.idea/**
 *.xml
 *.iml
+__pycache__
