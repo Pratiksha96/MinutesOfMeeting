@@ -34,17 +34,17 @@ class RecordingFile(object):
     def __exit__(self, exception, value, traceback):
         self.close()
 
-    # def record(self, duration):
-    #     # Use a stream with no callback function in blocking mode
-    #     self._stream = self._pa.open(format=pyaudio.paInt16,
-    #                                     channels=self.channels,
-    #                                     rate=self.rate,
-    #                                     input=True,
-    #                                     frames_per_buffer=self.frames_per_buffer)
-    #     for _ in range(int(self.rate / self.frames_per_buffer * duration)):
-    #         audio = self._stream.read(self.frames_per_buffer)
-    #         self.wavefile.writeframes(audio)
-    #     return None
+    def record(self, duration):
+        # Use a stream with no callback function in blocking mode
+        self._stream = self._pa.open(format=pyaudio.paInt16,
+                                        channels=self.channels,
+                                        rate=self.rate,
+                                        input=True,
+                                        frames_per_buffer=self.frames_per_buffer)
+        for _ in range(int(self.rate / self.frames_per_buffer * duration)):
+            audio = self._stream.read(self.frames_per_buffer)
+            self.wavefile.writeframes(audio)
+        return None
 
     def start_recording(self):
         # Use a stream with a callback in non-blocking mode
@@ -67,7 +67,6 @@ class RecordingFile(object):
             return in_data, pyaudio.paContinue
         return callback
 
-
     def close(self):
         self._stream.close()
         self._pa.terminate()
@@ -88,7 +87,7 @@ class Recording(threading.Thread):
         self.rec = Recorder(channels=2)
 
     def generateFileName(self):
-        return 'recordMe' + time.asctime(time.localtime(time.time())) + '.mp3'
+        return 'recording ' + str(time.time()) + '.mp3'
 
     def run(self):
         with self.rec.open(self.generateFileName(), 'wb') as self.recfile2:
@@ -130,8 +129,3 @@ class mywindow(QtWidgets.QMainWindow):
     def stopButtonClicked(self):
         print("stopButtonClicked")
         self.recordingThread.stop()
-
-app = QtWidgets.QApplication([])
-application = mywindow()
-application.ui.show()
-app.exec()
