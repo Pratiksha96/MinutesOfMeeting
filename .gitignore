@@ -4,3 +4,6 @@
 *.xml
 *.iml
 __pycache__
+*.pyc
+__pycache__/**
+.fuse*
