@@ -6,47 +6,70 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>410</width>
+    <height>369</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTextBrowser" name="displayText">
+  <widget class="QTextBrowser" name="statusBox">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>321</width>
-     <height>192</height>
+     <width>361</width>
+     <height>191</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="startButton">
+  <widget class="QPushButton" name="callButton">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>240</y>
-     <width>89</width>
+     <x>280</x>
+     <y>300</y>
+     <width>101</width>
      <height>29</height>
     </rect>
    </property>
    <property name="text">
-    <string>Start</string>
+    <string>Call via Jabber</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="stopButton">
+  <widget class="QComboBox" name="agendaDropDown">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>240</y>
-     <width>89</width>
+     <x>30</x>
+     <y>230</y>
+     <width>201</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="selectFileButton">
+   <property name="geometry">
+    <rect>
+     <x>248</x>
+     <y>230</y>
+     <width>131</width>
      <height>29</height>
     </rect>
    </property>
    <property name="text">
-    <string>Stop</string>
+    <string>Select Agenda File</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="phoneNumberEntry">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>300</y>
+     <width>211</width>
+     <height>33</height>
+    </rect>
    </property>
   </widget>
  </widget>
