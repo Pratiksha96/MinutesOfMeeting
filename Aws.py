@@ -10,7 +10,7 @@ class Aws(object):
         self.s3 = boto3.resource('s3',aws_access_key_id=config["DEFAULT"]["aws_access_key_id"],aws_secret_access_key=config["DEFAULT"]["aws_secret_access_key"])
         self.s3Client = boto3.client('s3')
         self.transcribeClient = boto3.client('transcribe')
-        self.bucketName = 'reinventorsbucket'
+        self.bucketName = config["DEFAULT"]["bucketName"]
 
 
     def getTextFromSpeech(self, speechFile):
