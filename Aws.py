@@ -1,15 +1,13 @@
 import boto3
 import json
-from pprint import pprint
-from summa import summarizer
-from summa.summarizer import summarize
+
 
 class Aws(object):
 
     def __init__(self,s3,transcribe):
         self.s3 = boto3.resource('s3',
         aws_access_key_id="AKIAIQL2TXLPRNX5BR6A",
-        aws_secret_access_key= "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")
+        aws_secret_access_key= "OLm2E+gPFPvlGjFuuT7Be1RVYxsz4LVCUyhjz/uQ"
         self.s3_client = boto3.client('s3')
         self.transcribe_client = boto3.client('transcribe')
         self.bucketName = 'reinventorsbucket'
@@ -47,7 +45,6 @@ class Aws(object):
             'ChannelIdentification': False
         }
         )
-
 
 
 
