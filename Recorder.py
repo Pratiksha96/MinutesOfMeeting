@@ -145,6 +145,7 @@ class mywindow(QtWidgets.QMainWindow):
 
     def stopButtonClicked(self):
         self.recordingThread.stop()
+        
 
     def selectFileButtonClicked(self):
         fileLocation, fileType = QtWidgets.QFileDialog.getOpenFileName()
