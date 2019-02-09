@@ -1,15 +1,15 @@
 import boto3
 import json
-
+import configparser
 
 class Aws(object):
 
     def __init__(self,s3,transcribe):
-        self.s3 = boto3.resource('s3',
-        aws_access_key_id="AKIAIQL2TXLPRNX5BR6A",
-        aws_secret_access_key= "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"
-        self.s3_client = boto3.client('s3')
-        self.transcribe_client = boto3.client('transcribe')
+        config = configparser.ConfigParser()
+        config.read("settings.properties")
+        self.s3 = boto3.resource('s3',aws_access_key_id=config["DEFAULT"]["aws_access_key_id"],aws_secret_access_key=config["DEFAULT"]["aws_secret_access_key"])
+        self.s3Client = boto3.client('s3')
+        self.transcribeClient = boto3.client('transcribe')
         self.bucketName = 'reinventorsbucket'
 
 
@@ -43,8 +43,7 @@ class Aws(object):
             'ShowSpeakerLabels': True
             'MaxSpeakerLabels': 3,
             'ChannelIdentification': False
-        }
-        )
+        })
 
 
 
