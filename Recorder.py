@@ -4,6 +4,7 @@ import threading
 import pyaudio
 import wave
 
+
 class Recorder(object):
     '''A recorder class for recording audio to a MP3 file.
     Records in mono by default.
@@ -44,7 +45,6 @@ class RecordingFile(object):
         for _ in range(int(self.rate / self.frames_per_buffer * duration)):
             audio = self._stream.read(self.frames_per_buffer)
             self.wavefile.writeframes(audio)
-        return None
 
     def start_recording(self):
         # Use a stream with a callback in non-blocking mode
@@ -140,12 +140,15 @@ class mywindow(QtWidgets.QMainWindow):
             print(e)
 
     def callButtonClicked(self):
+        phoneNumber = self.getPhoneNumber()
+        # jabber = Jabber()
+        # jabber.call(phoneNumber)
         self.recordingThread = Recording()
         self.recordingThread.start()
-
-    def stopButtonClicked(self):
+        # while jabber.isCalling()
+        #  pass
         self.recordingThread.stop()
-        
+
 
     def selectFileButtonClicked(self):
         fileLocation, fileType = QtWidgets.QFileDialog.getOpenFileName()
