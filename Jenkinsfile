@@ -1,8 +1,9 @@
 node {
 stage('get code') {
-    git credentialsId: 'tsamridh86GHid', url: 'https://github.com/Pratiksha96/MinutesOfMeeting'
+    git branch: 'samridh', credentialsId: 'tsamridh86GHid', url: 'https://github.com/Pratiksha96/MinutesOfMeeting/'
 }
 stage('create executable') {
     sh label: '', script: 'pyinstaller --onefile main.py'
+    sh label: '', script: 'cp gui.ui dist'
 }
 }
