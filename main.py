@@ -1,8 +1,8 @@
 from PyQt5 import QtWidgets, QtGui, uic
 
-import Recorder
+import UI
 
 app = QtWidgets.QApplication([])
-application = Recorder.mywindow()
+application = UI.mywindow()
 application.ui.show()
 app.exec()
